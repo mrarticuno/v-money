@@ -3,7 +3,7 @@ import defaults from './options'
 function format (input, opt = defaults) {
   if (typeof input === 'number') {
     if (opt.cents) {
-      input = input / 100
+      input = parseInt(input) / 100
     }
     input = input.toFixed(fixed(opt.precision))
   }
@@ -24,7 +24,7 @@ function unformat (input, opt = defaults) {
   var currency = numbersToCurrency(numbers, opt.precision)
   var result = parseFloat(currency) * negative
   if (opt.cents) {
-    result * 100
+    result = result * 100
   }
   return result
 }
