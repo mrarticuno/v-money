@@ -3,5 +3,6 @@ export default {
   suffix: '',
   thousands: ',',
   decimal: '.',
+  cents: false,
   precision: 2
 }

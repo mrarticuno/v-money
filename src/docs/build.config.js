@@ -6,9 +6,9 @@ module.exports = {
   babel: {
     babelrc: false,
   },
-  // html: {
-  //   template: path.resolve(__dirname, './layout.html')
-  // },
+  html: {
+    template: path.resolve(__dirname, './layout.html')
+  },
   webpack: {
     devtool: false, // disable source-map
     output: {

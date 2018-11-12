@@ -1,3 +1,7 @@
 {
-  "presets": ["vue-app"]
+  "presets": [
+    ["vue", {
+      "eventModifiers": false
+    }]
+  ]
 }

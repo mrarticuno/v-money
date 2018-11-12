@@ -2,6 +2,9 @@ import defaults from './options'
 
 function format (input, opt = defaults) {
   if (typeof input === 'number') {
+    if (opt.cents) {
+      input = input / 100
+    }
     input = input.toFixed(fixed(opt.precision))
   }
   var negative = input.indexOf('-') >= 0 ? '-' : ''
@@ -15,11 +18,15 @@ function format (input, opt = defaults) {
   return opt.prefix + negative + joinIntegerAndDecimal(integer, decimal, opt.decimal) + opt.suffix
 }
 
-function unformat (input, precision) {
+function unformat (input, opt = defaults) {
   var negative = input.indexOf('-') >= 0 ? -1 : 1
   var numbers = onlyNumbers(input)
-  var currency = numbersToCurrency(numbers, precision)
-  return parseFloat(currency) * negative
+  var currency = numbersToCurrency(numbers, opt.precision)
+  var result = parseFloat(currency) * negative
+  if (opt.cents) {
+    result * 100
+  }
+  return result
 }
 
 function onlyNumbers (input) {
